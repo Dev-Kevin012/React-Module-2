@@ -24,7 +24,7 @@ const Expenses = () => {
           value={filterTerm}
           onChange={(e) => setFilterTerm(e.target.value)}
         />
-        <table className="table table-sm table-zebra mb-5">
+        <table className="table table-md table-zebra mb-5">
           <thead>
             <tr>
               <th>#</th>
@@ -34,23 +34,29 @@ const Expenses = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            {filteredExpenses.map((expense, i) => (
-              <tr key={i}>
-                <th>{i + 1}</th>
-                <th>{expense.name}</th>
-                <th>{expense.amount}</th>
-                <th>{expense.date}</th>
-                <th>
-                  <button
-                    className="btn btn-sm btn-error"
-                    onClick={() => handleDelete(i)}
-                  >
-                    delete
-                  </button>
-                </th>
+          <tbody className="font-bold">
+            {filteredExpenses.length > 0 ? (
+              filteredExpenses.map((expense, i) => (
+                <tr key={expense.id}>
+                  <td>{i + 1}</td>
+                  <td>{expense.name}</td>
+                  <td>{expense.amount}</td>
+                  <td>{expense.date}</td>
+                  <td>
+                    <button
+                      className="btn btn-sm btn-error"
+                      onClick={() => handleDelete(i)}
+                    >
+                      delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className="text-center font-bold">
+                <td colSpan={5}>No Items matched your search!</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>

@@ -1,12 +1,14 @@
 import React from "react";
 import { useAppContext } from "../hooks/useAppContext";
 import { useForm } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid";
 
 const Form = () => {
   const { handleSubmit, register, reset } = useForm();
   const { expenses, setExpenses } = useAppContext();
 
   const onSubmit = (data) => {
+    data.id = uuidv4();
     setExpenses([...expenses, data]);
     reset();
   };
@@ -15,7 +17,7 @@ const Form = () => {
     <div className="flex w-full justify-center p-4">
       <div className="card w-96 bg-base-100 shadow-md">
         <form
-          className="card-body items-center text-center gap-2"
+          className="card-body items-center text-center gap-3"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
