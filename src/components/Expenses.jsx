@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAppContext } from "../hooks/useAppContext";
 
 const Expenses = () => {
   const { expenses, setExpenses } = useAppContext();
+  const [filterTerm, setFilterTerm] = useState("");
 
   const handleDelete = (index) => {
     const updatedExpenses = [...expenses];
@@ -10,10 +11,20 @@ const Expenses = () => {
     setExpenses(updatedExpenses);
   };
 
+  const filteredExpenses = expenses.filter((expense) =>
+    expense.name.toLowerCase().includes(filterTerm.toLowerCase())
+  );
+
   if (expenses.length > 0) {
     return (
-      <div className="overflow-x-auto md:w-[50%] mx-auto my-5">
-        <table className="table table-sm table-zebra">
+      <div className="md:w-[50%] mx-auto my-2 flex flex-col items-center gap-3">
+        <input
+          className="input input-bordered w-full max-w-xs"
+          placeholder="Search Expenses"
+          value={filterTerm}
+          onChange={(e) => setFilterTerm(e.target.value)}
+        />
+        <table className="table table-sm table-zebra mb-5">
           <thead>
             <tr>
               <th>#</th>
@@ -24,7 +35,7 @@ const Expenses = () => {
             </tr>
           </thead>
           <tbody>
-            {expenses.map((expense, i) => (
+            {filteredExpenses.map((expense, i) => (
               <tr key={i}>
                 <th>{i + 1}</th>
                 <th>{expense.name}</th>

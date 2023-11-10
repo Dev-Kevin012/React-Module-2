@@ -10,11 +10,12 @@ const Form = () => {
     setExpenses([...expenses, data]);
     reset();
   };
+
   return (
     <div className="flex w-full justify-center p-4">
       <div className="card w-96 bg-base-100 shadow-md">
         <form
-          className="card-body items-center text-center gap-4"
+          className="card-body items-center text-center gap-2"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input
