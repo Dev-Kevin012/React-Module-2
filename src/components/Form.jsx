@@ -22,12 +22,21 @@ const Form = () => {
             placeholder="Expense Item"
             className="input input-bordered w-full max-w-xs"
             {...register("name")}
+            required
           />
           <input
             type="number"
             placeholder="Amount"
             className="input input-bordered w-full max-w-xs"
             {...register("amount")}
+            required
+          />
+          <input
+            type="date"
+            placeholder="Date"
+            className="input input-bordered w-full max-w-xs"
+            {...register("date")}
+            required
           />
           <button className="btn btn-primary">Add Expense</button>
         </form>

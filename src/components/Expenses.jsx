@@ -19,6 +19,7 @@ const Expenses = () => {
               <th>#</th>
               <th>Expense Name</th>
               <th>Amount</th>
+              <th>Date</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -28,6 +29,7 @@ const Expenses = () => {
                 <th>{i + 1}</th>
                 <th>{expense.name}</th>
                 <th>{expense.amount}</th>
+                <th>{expense.date}</th>
                 <th>
                   <button
                     className="btn btn-sm btn-error"

@@ -1,13 +1,15 @@
 import "./App.css";
 import Expenses from "./components/Expenses";
 import Form from "./components/Form";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <section className="h-screen w-full">
+    <main className="h-full w-full">
+      <Navbar />
       <Form />
       <Expenses />
-    </section>
+    </main>
   );
 }
 
